@@ -1,0 +1,3 @@
+int32 message_id
+string content
+float64 timestamp
