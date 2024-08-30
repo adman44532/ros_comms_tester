@@ -24,10 +24,10 @@ setup(
     entry_points={
         'console_scripts': [
             'endpoint_emulator = comms_tester.endpoint_emulator:main',
-            'simple_string_rtt = comms_tester.simple_string_rtt:main',
-            'large_payload_rtt = comms_tester.large_payload_rtt:main',
-            'increasing_payload_rtt = comms_tester.increasing_payload_rtt:main',
-            'custom_message_rtt = comms_tester.custom_message_rtt:main',
+            'simple_string_rtt = comms_tester.testers.simple_string_rtt:main',
+            'large_payload_rtt = comms_tester.testers.large_payload_rtt:main',
+            'increasing_payload_rtt = comms_tester.testers.increasing_payload_rtt:main',
+            'custom_message_rtt = comms_tester.testers.custom_message_rtt:main',
         ],
     },
 )

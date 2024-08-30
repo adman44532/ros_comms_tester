@@ -113,7 +113,7 @@ def plot_rtt(data):
 
 
 def main():
-    csv_file_path = 'increasing_payload_rtt_log.csv'  # Modify this path if the CSV is in a different location
+    csv_file_path = 'data/simple_string_rtt_log.csv'  # Modify this path if the CSV is in a different location
 
     # Read data from CSV
     data = read_csv_data(csv_file_path)
