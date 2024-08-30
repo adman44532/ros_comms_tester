@@ -3,14 +3,21 @@
 #
 # This is an overall class for measuring Round-Trip-Time (RTT) for a series
 # of tests which inherit from this base class.
+#
+#
+# IMPLEMENTATION
+#
+# 1. A child node extends the base __init__ with publishers, subscribers and
+#    test specific globals (e.g. Message Size) 
+# 2. All nodes must implement a publish_message method, accounting for new globals
+# 3. If the returning message is not of std_msgs.String() type, then 
+#    extract_message_id need reimplementation to return an int()
 
-import rclpy
 from rclpy.node import Node
-from std_msgs.msg import String
 from time import perf_counter
 import csv
 
-class RTTBaseClass(Node):
+class RTTBaseNode(Node):
     def __init__(self, node_name, log_file='rtt_log.csv', timeout=2.0):
         super().__init__(node_name)
         
