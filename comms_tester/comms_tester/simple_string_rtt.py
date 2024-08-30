@@ -63,9 +63,10 @@ class SimpleStringRTT(Node):
         if msg_id in self.send_times:
             send_time = self.send_times.pop(msg_id)  # Retrieve and remove the send time
             rtt = receive_time - send_time
-            self.log_data.append({'message_id': msg_id, 'send_time': send_time, 'receive_time': receive_time, 'rtt': rtt})
+            self.log_data.append({'messsage_id': msg_id, 'send_time': send_time, 'receive_time': receive_time, 'rtt': rtt})
             self.get_logger().info(f'Received response for message {msg_id}. RTT: {rtt:.6f} seconds')
 
+            self.save_rtt_log()
 
     def check_for_timeouts(self):
         current_time = perf_counter()
