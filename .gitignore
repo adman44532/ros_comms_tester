@@ -1,3 +1,4 @@
 .vscode
 .idea
-comms_tester/comms_tester/*.csv
+comms_tester/comms_tester/data/*.csv
+comms_tester/comms_tester/data/*.png
