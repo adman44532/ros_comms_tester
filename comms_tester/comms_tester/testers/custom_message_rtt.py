@@ -7,7 +7,7 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class CustomMessageRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__('custom_message_rtt', log_file='custom_message_rtt_log.csv')
+        super().__init__('custom_message_rtt', log_file='custom_message_rtt_log')
 
         # Publisher and Subscriber setup
         self.publisher_ = self.create_publisher(CustomMessage, 'latency_test_request', 10)

@@ -12,7 +12,7 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class LargePayloadRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__(node_name='large_payload_rtt', log_file='large_payload_rtt_log.csv', timeout=2.0)
+        super().__init__(node_name='large_payload_rtt', log_file='large_payload_rtt_log', timeout=2.0)
         
         self.publisher = self.create_publisher(String, 'latency_test_request')
         self.subscriber_ = self.create_subscription(String, 'latency_test_response', self.listener_callback, 10)

@@ -15,14 +15,17 @@
 
 import csv
 import os
+import rclpy
 from rclpy.node import Node
 from time import perf_counter
 import platform
 from datetime import datetime  # Import for date and time
 
 class RTTBaseNode(Node):
-    def __init__(self, node_name, log_file='rtt_log.csv', timeout=2.0):
+    def __init__(self, node_name, log_file='rtt_log', timeout=2.0, message_limit=0):
         super().__init__(node_name)
+        self.start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        log_file = log_file + self.start_time + ".csv"
         
         # Ensure the file is saved in the data folder
         self.log_file = os.path.join('data', log_file)
@@ -30,7 +33,6 @@ class RTTBaseNode(Node):
         self.timeout = timeout
 
         # Get the start date and time
-        self.start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         
         # Create the data directory if it does not exist
         os.makedirs('data', exist_ok=True)
@@ -41,6 +43,7 @@ class RTTBaseNode(Node):
         self.timer = self.create_timer(1.0, self.publish_message)
         self.timeout_checker = self.create_timer(0.5, self.check_for_timeouts)
         
+        self.message_limit = message_limit
         self.msg_count = 0
         self.send_times = {}
         
@@ -78,6 +81,14 @@ class RTTBaseNode(Node):
 
     def publish_message(self):
         raise NotImplementedError("Subclasses must implement this method.")
+    
+    def message_limit_check(self):
+        if self.message_limit > 0 and self.msg_count >= self.message_limit:
+            self.get_logger().info('Reached message limit, stopping message publishing.')
+            self.timer.cancel()  # Stop the timer to stop publishing
+            rclpy.shutdown()
+            return True
+        return False
     
     def listener_callback(self, msg):
         receive_time = perf_counter()

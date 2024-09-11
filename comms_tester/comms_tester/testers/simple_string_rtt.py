@@ -15,13 +15,15 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class SimpleStringRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__(node_name='simple_string_rtt', log_file='simple_string_rtt_log.csv', timeout=2.0)
+        super().__init__(node_name='simple_string_rtt', log_file='simple_string_rtt_log', timeout=2.0, message_limit=1000)
         
         self.publisher_ = self.create_publisher(String, 'latency_test_request', 10)
         self.subscriber_ = self.create_subscription(String, 'latency_test_response', self.listener_callback, 10)
         
     # OVERRIDE
     def publish_message(self):
+        if self.message_limit_check():
+            return
         msg = String()
         msg.data = f'Hello from ROS2 {self.msg_count}'
         send_time = perf_counter()
