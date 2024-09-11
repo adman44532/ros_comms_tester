@@ -1,9 +1,12 @@
-# File: ros2_latency_test/large_payload_rtt.py
+# File: comms_tester/large_payload_rtt.py
 
 # Developed by Adam Pigram
-#
-# Test 2: Using a larger payload size, this script will use a 50KB string payload size
-# All logic mirrors the Test 1 Simple string
+# 
+# This will test the latency of communication via recording round trip times (RTT)
+# between a published message and received response. Saving the RTT to a csv file
+# in a data/ folder where the script in run in.
+
+# The code uses two topics to send and receive and sends a large string payload.
 
 import rclpy
 from std_msgs.msg import String
@@ -12,12 +15,13 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class LargePayloadRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__(node_name='large_payload_rtt', log_file='large_payload_rtt_log', timeout=2.0, message_limit=5)
+        # Change Variables here
+        super().__init__(node_name='large_payload_rtt', log_file='large_payload_rtt_log', timeout=2.0, message_limit=1000)
         
         self.publisher = self.create_publisher(String, 'latency_test_request')
         self.subscriber_ = self.create_subscription(String, 'latency_test_response', self.listener_callback, 10)
         
-        self.large_payload = 'X' * 1024 * 50 # Roughly 50KB Payload
+        self.large_payload = 'X' * 1024 * 100 # Roughly 100KB Payload
         
     def publish_message(self):
         if self.message_limit_check():

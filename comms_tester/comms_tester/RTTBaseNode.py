@@ -7,7 +7,7 @@
 #
 # IMPLEMENTATION
 #
-# 1. A child node extends the base __init__ with publishers, subscribers and
+# 1. A child node calls super.__init__(), then declares publishers, subscribers and
 #    test specific globals (e.g. Message Size) 
 # 2. All nodes must implement a publish_message method, accounting for new globals
 # 3. If the returning message is not of std_msgs.String() type, then 
@@ -15,7 +15,6 @@
 
 import csv
 import os
-import rclpy
 from rclpy.node import Node
 from time import perf_counter
 import platform

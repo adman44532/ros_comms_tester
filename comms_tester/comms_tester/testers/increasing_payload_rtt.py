@@ -1,4 +1,13 @@
-# File: ros2_latency_test/increasing_payload_rtt.py
+# File: comms_tester/increasing_payload_rtt.py
+
+# Developed by Adam Pigram
+# 
+# This will test the latency of communication via recording round trip times (RTT)
+# between a published message and received response. Saving the RTT to a csv file
+# in a data/ folder where the script in run in.
+
+# The code uses two topics to send and receive.
+# The string payload will slowly increase with each message.
 
 import rclpy
 from std_msgs.msg import String
@@ -7,7 +16,8 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class IncreasingPayloadRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__(node_name='increasing_payload_rtt', log_file='increasing_payload_rtt_log', timeout=2.0)
+        # Change Variables here
+        super().__init__(node_name='increasing_payload_rtt', log_file='increasing_payload_rtt_log', timeout=2.0, message_limit=1000)
         
         self.publisher_ = self.create_publisher(String, 'latency_test_request', 10)
         self.subscriber_ = self.create_subscription(String, 'latency_test_response', self.listener_callback, 10)

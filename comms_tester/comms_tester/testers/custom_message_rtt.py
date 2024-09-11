@@ -1,4 +1,13 @@
-# File: vr_comms/custom_message_rtt.py
+# File: comms_tester/custom_message_rtt.py
+
+# Developed by Adam Pigram
+# 
+# This will test the latency of communication via recording round trip times (RTT)
+# between a published message and received response. Saving the RTT to a csv file
+# in a `data/` folder where the script in run in.
+
+# The code uses two topics to send and receive.
+# This uses a custom message in the comms_interfaces package.
 
 import rclpy
 from comms_interfaces.msg import CustomMessage  # Import the custom message type
@@ -7,7 +16,8 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 
 class CustomMessageRTT(RTTBaseNode):
     def __init__(self):
-        super().__init__('custom_message_rtt', log_file='custom_message_rtt_log')
+        # Change Variables here
+        super().__init__('custom_message_rtt', log_file='custom_message_rtt_log', message_limit=1000)
 
         # Publisher and Subscriber setup
         self.publisher_ = self.create_publisher(CustomMessage, 'latency_test_request', 10)
