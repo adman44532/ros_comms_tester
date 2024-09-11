@@ -2,8 +2,8 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>comms_tester</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <version>1.0.0</version>
+  <description>A latency testing package for ROS2 communications, intended to be use with system bridging solutions like ROS2ToUnity and ROSTCPConnector</description>
   <maintainer email="adman44532@gmail.com">adman</maintainer>
   <license>TODO: License declaration</license>
 

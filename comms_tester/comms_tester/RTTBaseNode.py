@@ -25,10 +25,10 @@ class RTTBaseNode(Node):
     def __init__(self, node_name, log_file='rtt_log', timeout=2.0, message_limit=0):
         super().__init__(node_name)
         self.start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        log_file = log_file + self.start_time + ".csv"
+        full_log_file = log_file + self.start_time + ".csv"
         
         # Ensure the file is saved in the data folder
-        self.log_file = os.path.join('data', log_file)
+        self.log_file = os.path.join('data', full_log_file)
         self.log_data = []
         self.timeout = timeout
 
@@ -86,7 +86,7 @@ class RTTBaseNode(Node):
         if self.message_limit > 0 and self.msg_count >= self.message_limit:
             self.get_logger().info('Reached message limit, stopping message publishing.')
             self.timer.cancel()  # Stop the timer to stop publishing
-            rclpy.shutdown()
+            self.destroy_node()
             return True
         return False
     
@@ -139,19 +139,3 @@ class RTTBaseNode(Node):
             writer.writerows(self.log_data)
             self.log_data = []  # Clear logged data after writing
         self.get_logger().info(f'Saved RTT data to {self.log_file}')
-
-
-def main(args=None):
-    rclpy.init(args=args)
-    node = RTTBaseNode(node_name='simple_string_rtt')
-
-    try:
-        rclpy.spin(node)
-    except KeyboardInterrupt:
-        node.get_logger().info('Shutting down...')
-    finally:
-        node.destroy_node()
-        rclpy.shutdown()
-
-if __name__ == '__main__':
-    main()
