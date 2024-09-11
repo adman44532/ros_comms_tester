@@ -21,7 +21,7 @@ import platform
 from datetime import datetime  # Import for date and time
 
 class RTTBaseNode(Node):
-    def __init__(self, node_name, log_file='rtt_log', timeout=2.0, message_limit=0):
+    def __init__(self, node_name, log_file='rtt_log_', timeout=2.0, message_limit=0):
         super().__init__(node_name)
         self.start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         full_log_file = log_file + self.start_time + ".csv"

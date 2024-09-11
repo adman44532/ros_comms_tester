@@ -17,7 +17,7 @@ from comms_tester.RTTBaseNode import RTTBaseNode
 class IncreasingPayloadRTT(RTTBaseNode):
     def __init__(self):
         # Change Variables here
-        super().__init__(node_name='increasing_payload_rtt', log_file='increasing_payload_rtt_log', timeout=2.0, message_limit=1000)
+        super().__init__(node_name='increasing_payload_rtt', log_file='increasing_payload_rtt_log_', timeout=2.0, message_limit=1000)
         
         self.publisher_ = self.create_publisher(String, 'latency_test_request', 10)
         self.subscriber_ = self.create_subscription(String, 'latency_test_response', self.listener_callback, 10)
