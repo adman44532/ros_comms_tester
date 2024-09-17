@@ -9,12 +9,12 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import logging
-from datetime import datetime, timedelta  # Import for date and time operations
+from datetime import datetime, timedelta
+import argparse  # Import for command-line argument parsing
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
 
 def read_csv_data(csv_file_path):
     print("Reading CSV Data")
@@ -59,14 +59,12 @@ def read_csv_data(csv_file_path):
 
     return system_info, data
 
-
 def is_processed(system_info):
     """Checks if the CSV file has already been processed by looking for computed statistics."""
     for line in system_info:
         if line.startswith("# Run latency_plotter.py to compute statistics"):
             return False
     return True
-
 
 def compute_test_duration(system_info, data):
     """Computes the test duration based on the start time and last data point."""
@@ -98,8 +96,7 @@ def compute_test_duration(system_info, data):
     duration_str = str(duration).split(".")[0]
     return str(duration_str)
 
-
-def display_data(data):
+def display_data(data, threshold_time):
     print("Computing statistics")
     """Displays all relevant data points and statistics in the terminal, including packet loss information."""
     total_packets = len(data)
@@ -126,6 +123,8 @@ def display_data(data):
         "RTT Range": "N/A",
         "Standard Deviation of RTT": "N/A",
         "Variance of RTT": "N/A",
+        "Packets Under threshold": 0,
+        "Packets Over threshold": 0,
     }
 
     # Check if there is any received data
@@ -144,21 +143,39 @@ def display_data(data):
     std_dev_rtt = np.std(rtts)
     variance_rtt = np.var(rtts)
 
-    # Update statistics with computed RTT values
+    # Classify packets based on threshold
+    packets_under_threshold = sum(1 for rtt in rtts if rtt <= threshold_time)
+    packets_over_threshold = sum(1 for rtt in rtts if rtt > threshold_time)
+
+    # Update statistics with computed RTT values and threshold counts
     statistics.update({
         "Average RTT": f"{avg_rtt:.8f} s",
         "Median RTT": f"{median_rtt:.8f} s",
         "RTT Range": f"{range_rtt:.8f} s",
         "Standard Deviation of RTT": f"{std_dev_rtt:.8f} s",
         "Variance of RTT": f"{variance_rtt:.8f} s",
+        "Packets Under threshold": packets_under_threshold,
+        "Packets Over threshold": packets_over_threshold,
     })
+
+    # Display statistics
+    logger.info(f"Total Packets Sent       : {statistics['Total Packets Sent']}")
+    logger.info(f"Packets Received         : {statistics['Packets Received']}")
+    logger.info(f"Packets Lost             : {statistics['Packets Lost']}")
+    logger.info(f"Packet Loss Percentage   : {statistics['Packet Loss Percentage']}")
+    logger.info(f"Average RTT              : {statistics['Average RTT']}")
+    logger.info(f"Median RTT               : {statistics['Median RTT']}")
+    logger.info(f"RTT Range                : {statistics['RTT Range']}")
+    logger.info(f"Standard Deviation of RTT: {statistics['Standard Deviation of RTT']}")
+    logger.info(f"Variance of RTT          : {statistics['Variance of RTT']}")
+    logger.info(f"Packets Under Threshold : {statistics['Packets Under Threshold']}")
+    logger.info(f"Packets Over Threshold  : {statistics['Packets Over Threshold']}")
 
     return statistics
 
-
-def plot_rtt(data, output_path):
+def plot_rtt(data, output_path, threshold_time):
     print("Creating plots")
-    """Plots the RTT graph using matplotlib, marks packet loss, and saves the plot as a PNG file."""
+    """Plots the RTT graph using matplotlib, marks packet loss and over-threshold packets, and saves the plot as a PNG file."""
     received_data = [entry for entry in data if entry["rtt"] is not None]
     lost_data = [entry for entry in data if entry["rtt"] is None]
 
@@ -173,14 +190,26 @@ def plot_rtt(data, output_path):
     # Data for lost packets
     lost_message_ids = [entry["message_id"] for entry in lost_data]
 
-    plt.figure(figsize=(10, 5))
+    # Classify received packets based on threshold
+    under_threshold_ids = [entry["message_id"] for entry in received_data if entry["rtt"] <= threshold_time]
+    under_threshold_rtts = [entry["rtt"] for entry in received_data if entry["rtt"] <= threshold_time]
 
-    # Plot RTTs for received packets
-    plt.plot(
-        message_ids, rtts, marker="o", linestyle="-", color="b", label="Received RTT"
+    over_threshold_ids = [entry["message_id"] for entry in received_data if entry["rtt"] > threshold_time]
+    over_threshold_rtts = [entry["rtt"] for entry in received_data if entry["rtt"] > threshold_time]
+
+    plt.figure(figsize=(12, 6))
+
+    # Plot RTTs for packets under threshold
+    plt.scatter(
+        under_threshold_ids, under_threshold_rtts, marker="o", color="b", label="Meets Threshold"
     )
 
-    # Plot lost packets as red X marks
+    # Plot RTTs for packets over threshold
+    plt.scatter(
+        over_threshold_ids, over_threshold_rtts, marker="o", color="orange", label="Over Threshold"
+    )
+
+    # Plot lost packets as red X marks at RTT = 0
     plt.scatter(
         lost_message_ids,
         [0] * len(lost_message_ids),
@@ -190,26 +219,27 @@ def plot_rtt(data, output_path):
         label="Lost Packets",
     )
 
-    # Calculate line of best fit
-    if (
-        len(message_ids) > 1
-    ):  # Ensure there is enough data to calculate a line of best fit
+    # Draw the threshold line
+    plt.axhline(y=threshold_time, color='g', linestyle='--', label=f'Threshold RTT = {threshold_time:.4f}s')
+
+    # Calculate and plot line of best fit for all received RTTs
+    if len(message_ids) > 1:  # Ensure there's enough data for a line of best fit
         coeffs = np.polyfit(message_ids, rtts, 1)  # 1st degree polynomial (linear fit)
         best_fit_line = np.poly1d(coeffs)
 
-        # Plot the line of best fit with improved visibility
+        # Plot the line of best fit
         plt.plot(
             message_ids,
             best_fit_line(message_ids),
-            color="red",  # Change color to red for better visibility
-            linestyle="-",  # Use a solid line for clarity
-            linewidth=4,  # Increase line width to make it thicker
-            label="Best Fit Line",
+            color="red",
+            linestyle="-",
+            linewidth=2,
+            label="Line of Best Fit"
         )
 
     plt.xlabel("Message ID")
     plt.ylabel("RTT (seconds)")
-    plt.title("Round-Trip Time (RTT) Analysis with Packet Loss")
+    plt.title("Round-Trip Time (RTT) Analysis with Packet Loss and Threshold")
     plt.grid(True)
     plt.legend()
 
@@ -217,9 +247,7 @@ def plot_rtt(data, output_path):
     plt.savefig(output_path)
     logger.info(f"Plot saved as {output_path}")
     plt.close()
-
-
-def write_statistics_to_csv(csv_file_path, statistics, test_duration):
+def write_statistics_to_csv(csv_file_path, statistics, test_duration, threshold_time):
     print("Appending data to csv")
     """Appends computed statistics in tabbed format to the CSV file."""
     with open(csv_file_path, "r", encoding="utf-8") as csvfile:
@@ -228,8 +256,11 @@ def write_statistics_to_csv(csv_file_path, statistics, test_duration):
     # Find the location to insert computed statistics
     statistics_index = lines.index("# Computed Statistics\n") + 1
 
-    # Update the statistics in tabbed format
-    lines[statistics_index : statistics_index + 2] = [
+    # Preserve all lines including data rows before the statistics insertion point
+    data_lines = lines[statistics_index:]
+
+    # Construct the new statistics lines
+    statistics_lines = [
         f"# Total Packets Sent       : {statistics['Total Packets Sent']}\n",
         f"# Packets Received         : {statistics['Packets Received']}\n",
         f"# Packets Lost             : {statistics['Packets Lost']}\n",
@@ -239,17 +270,30 @@ def write_statistics_to_csv(csv_file_path, statistics, test_duration):
         f"# RTT Range                : {statistics['RTT Range']}\n",
         f"# Standard Deviation of RTT: {statistics['Standard Deviation of RTT']}\n",
         f"# Variance of RTT          : {statistics['Variance of RTT']}\n",
+        f"# Packets Under Threshold  : {statistics['Packets Under Threshold']}\n",
+        f"# Packets Over Threshold   : {statistics['Packets Over Threshold']}\n",
+        f"# Threshold RTT            : {threshold_time} s\n",
         f"# Test Duration            : {test_duration}\n",
         "#\n",
     ]
 
-    # Write back the updated lines to the CSV file
+    # Combine all lines: original lines up to the statistics marker + new statistics + original data rows
+    updated_lines = lines[:statistics_index] + statistics_lines + data_lines
+
+    # Write back all the lines, including the original data and new statistics
     with open(csv_file_path, "w", encoding="utf-8") as csvfile:
-        csvfile.writelines(lines)
+        csvfile.writelines(updated_lines)
 
 
 def main():
     print("Starting latency plotter")
+
+    # Parse command-line arguments for threshold time
+    parser = argparse.ArgumentParser(description='Process RTT logs and generate statistics and plots.')
+    parser.add_argument('--threshold', type=float, default=0.02, help='Threshold RTT time in seconds')
+    args = parser.parse_args()
+    threshold_time = args.threshold
+
     # Define the directory containing the CSV files
     data_folder = "data"
 
@@ -281,20 +325,19 @@ def main():
             test_duration = compute_test_duration(system_info, data)
 
             # Display data points and statistics in the terminal
-            statistics = display_data(data)
+            statistics = display_data(data, threshold_time)
 
             # Append computed statistics to CSV
-            write_statistics_to_csv(csv_file_path, statistics, test_duration)
+            write_statistics_to_csv(csv_file_path, statistics, test_duration, threshold_time)
 
             # Plot the RTT graph and save as PNG
             output_path = os.path.join(
                 data_folder, f"{os.path.splitext(csv_file)[0]}.png"
             )
-            plot_rtt(data, output_path)
+            plot_rtt(data, output_path, threshold_time)
         else:
             logger.info(f"No data available for plotting from file '{csv_file}'.")
     print("Latency Plotter complete")
-
 
 if __name__ == "__main__":
     main()

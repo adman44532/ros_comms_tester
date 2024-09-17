@@ -1,8 +1,8 @@
 # Developed by Adam Pigram
 #
-# This will test the latency of communication via recording round trip times (RTT)
-# between a published message and received response. Saving the RTT to a csv file
-# in a `data/` folder where the script in run in.
+# This script tests the latency of communication by recording round-trip times (RTT)
+# between a published message and a received response. The RTTs are saved to a CSV file
+# in a `data/` folder where the script is run.
 #
 # The code uses two topics to send and receive.
 # This uses a custom message in the comms_interfaces package.
@@ -10,14 +10,22 @@
 import rclpy
 from comms_interfaces.msg import CustomMessage  # Import the custom message type
 from time import perf_counter
-from comms_tester.RTTBaseNode import RTTBaseNode
+from RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
+qos_profile = QoSProfile(
+    reliability=ReliabilityPolicy.RELIABLE,
+    history=HistoryPolicy.KEEP_LAST,
+    depth=10
+)
 
 class CustomMessageRTT(RTTBaseNode):
     def __init__(self):
-        # Change Variables here
         super().__init__(
-            "custom_message_rtt", log_file="custom_message_rtt_log_", message_limit=1000
+            node_name="custom_message_rtt",
+            log_file="custom_message_rtt_log_",
+            message_interval=0.25,
+            message_limit=1000
         )
 
         # Publisher and Subscriber setup
@@ -25,7 +33,7 @@ class CustomMessageRTT(RTTBaseNode):
             CustomMessage, "latency_test_request", 10
         )
         self.subscriber_ = self.create_subscription(
-            CustomMessage, "latency_test_response", self.listener_callback, 10
+            CustomMessage, "latency_test_response", self.listener_callback, qos_profile=qos_profile
         )
 
     def publish_message(self):

@@ -1,35 +1,39 @@
 # Developed by Adam Pigram
 #
-# This will test the latency of communication via recording round trip times (RTT)
-# between a published message and received response. Saving the RTT to a csv file
-# in a data/ folder where the script in run in.
+# This script tests the latency of communication by recording round-trip times (RTT)
+# between a published message and a received response. The RTTs are saved to a CSV file
+# in a data/ folder where the script is run.
 #
-# The code uses two topics to send and receive.
-# The string payload will slowly increase with each message.
+# The code uses two topics to send and receive messages.
+# The string payload will increase incrementally with each message.
 
 import rclpy
 from std_msgs.msg import String
 from time import perf_counter
-from comms_tester.RTTBaseNode import RTTBaseNode
+from comms_tester.RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
+qos_profile = QoSProfile(
+    reliability=ReliabilityPolicy.RELIABLE,
+    history=HistoryPolicy.KEEP_LAST,
+    depth=10
+)
 
 class IncreasingPayloadRTT(RTTBaseNode):
     def __init__(self):
-        # Change Variables here
         super().__init__(
             node_name="increasing_payload_rtt",
             log_file="increasing_payload_rtt_log_",
             message_interval=0.25,
-            timeout=2.0,
             message_limit=1000,
         )
 
         self.publisher_ = self.create_publisher(String, "latency_test_request", 10)
         self.subscriber_ = self.create_subscription(
-            String, "latency_test_response", self.listener_callback, 10
+            String, "latency_test_response", self.listener_callback, qos_profile=qos_profile
         )
 
-        self.initial_payload_size = 1  # Starting point
+        self.initial_payload_size = 1  # Starting payload size in bytes
         self.payload_increment = 1024  # Increase payload size by 1 KB with each message
         self.current_payload_size = self.initial_payload_size
 
@@ -41,11 +45,8 @@ class IncreasingPayloadRTT(RTTBaseNode):
         msg.data = f"Hello from ROS2 {self.msg_count} " + large_payload
         send_time = perf_counter()  # Use perf_counter for high-resolution timing
 
-        # Track message send time
-        self.send_times[self.msg_count] = (
-            send_time,
-            False,
-        )  # Store time and a flag indicating if it's already marked as lost
+        # Track message send time and initial received status (False)
+        self.send_times[self.msg_count] = (send_time, False)
         self.publisher_.publish(msg)
 
         self.get_logger().info(

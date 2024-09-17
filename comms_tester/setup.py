@@ -27,7 +27,6 @@ setup(
             'simple_string_rtt = comms_tester.testers.simple_string_rtt:main',
             'large_payload_rtt = comms_tester.testers.large_payload_rtt:main',
             'increasing_payload_rtt = comms_tester.testers.increasing_payload_rtt:main',
-            'increasing_payload_short_rtt = comms_tester.testers.increasing_payload_short_rtt:main',
             'custom_message_rtt = comms_tester.testers.custom_message_rtt:main',
         ],
     },

@@ -1,16 +1,16 @@
 # Developed by Adam Pigram
 #
-# This will test the latency of communication via recording round trip times (RTT)
-# between a published message and received response. Saving the RTT to a csv file
-# in a data/ folder where the script in run in.
+# This script tests the latency of communication by recording round-trip times (RTT)
+# between a published message and a received response. The RTTs are saved to a CSV file
+# in a data/ folder where the script is run.
 #
-# The code uses two topics to send and receive.
-# Sends a basic string
+# The code uses two topics to send and receive messages.
+# It sends a basic string message.
 
 import rclpy
 from std_msgs.msg import String
 from time import perf_counter
-from comms_tester.RTTBaseNode import RTTBaseNode
+from comms_tester.RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 qos_profile = QoSProfile(
@@ -21,18 +21,16 @@ qos_profile = QoSProfile(
 
 class SimpleStringRTT(RTTBaseNode):
     def __init__(self):
-        # Change Variables here
         super().__init__(
             node_name="simple_string_rtt",
             log_file="simple_string_rtt_log_",
             message_interval=0.25,
-            timeout=2.0,
             message_limit=1000,
         )
 
         self.publisher_ = self.create_publisher(String, "latency_test_request", 10)
         self.subscriber_ = self.create_subscription(
-            String, "latency_test_response", self.listener_callback, qos_profile
+            String, "latency_test_response", self.listener_callback, qos_profile=qos_profile
         )
 
     # OVERRIDE
@@ -43,11 +41,10 @@ class SimpleStringRTT(RTTBaseNode):
         msg.data = f"Hello from ROS2 {self.msg_count}"
         send_time = perf_counter()
         self.publisher_.publish(msg)
-        self.send_times[self.msg_count] = (send_time, False)  # dict send_time, is_lost
+        self.send_times[self.msg_count] = (send_time, False)  # Indicate not yet received
 
-        self.get_logger().info(f"Publisher message {self.msg_count} at {send_time}")
+        self.get_logger().info(f"Published message {self.msg_count} at {send_time}")
         self.msg_count += 1
-
 
 def main(args=None):
     rclpy.init(args=args)
@@ -60,7 +57,6 @@ def main(args=None):
     finally:
         simple_string_rtt.destroy_node()
         rclpy.shutdown()
-
 
 if __name__ == "__main__":
     main()
