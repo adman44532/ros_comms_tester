@@ -64,9 +64,9 @@ def read_csv_data(csv_file_path):
 def is_processed(system_info):
     """Checks if the CSV file has already been processed by looking for computed statistics."""
     for line in system_info:
-        if line.startswith("# Run latency_plotter.py to compute statistics"):
-            return False
-    return True
+        if line.startswith("# Total Packets Sent"):
+            return True  # File is already processed
+    return False
 
 
 def compute_test_duration(system_info, data):
@@ -174,11 +174,12 @@ def display_data(data, threshold_time):
     logger.info(f"RTT Range                : {statistics['RTT Range']}")
     logger.info(f"Standard Deviation of RTT: {statistics['Standard Deviation of RTT']}")
     logger.info(f"Variance of RTT          : {statistics['Variance of RTT']}")
-    logger.info(f"Packets Under Threshold  : {statistics['Packets Under Threshold']}")  # Corrected key name
+    logger.info(
+        f"Packets Under Threshold  : {statistics['Packets Under Threshold']}"
+    )  # Corrected key name
     logger.info(f"Packets Over Threshold   : {statistics['Packets Over Threshold']}")
 
     return statistics
-
 
 
 def plot_rtt(data, output_path, threshold_time):
@@ -280,10 +281,10 @@ def plot_rtt(data, output_path, threshold_time):
 
     # Histogram plot for RTT distribution
     plt.figure(figsize=(10, 6))
-    plt.hist(rtts, bins=30, color='skyblue', edgecolor='black')
-    plt.xlabel('RTT (seconds)')
-    plt.ylabel('Frequency')
-    plt.title('Distribution of RTTs')
+    plt.hist(rtts, bins=30, color="skyblue", edgecolor="black")
+    plt.xlabel("RTT (seconds)")
+    plt.ylabel("Frequency")
+    plt.title("Distribution of RTTs")
     plt.grid(True)
 
     # Save the histogram as a PNG file
@@ -291,7 +292,6 @@ def plot_rtt(data, output_path, threshold_time):
     plt.savefig(histogram_output_path)
     logger.info(f"Histogram plot saved as {histogram_output_path}")
     plt.close()
-
 
 
 def write_statistics_to_csv(csv_file_path, statistics, test_duration, threshold_time):
