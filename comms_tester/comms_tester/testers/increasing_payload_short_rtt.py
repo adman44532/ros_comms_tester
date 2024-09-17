@@ -17,10 +17,10 @@ class IncreasingPayloadRTT(RTTBaseNode):
     def __init__(self):
         # Change Variables here
         super().__init__(
-            node_name="increasing_payload_rtt",
-            log_file="increasing_payload_rtt_log_",
+            node_name="increasing_payload_short_rtt",
+            log_file="increasing_payload_short_rtt_log_",
             message_interval=0.25,
-            timeout=2.0,
+            timeout=0.02,
             message_limit=1000,
         )
 

@@ -22,7 +22,7 @@ from datetime import datetime  # Import for date and time
 
 
 class RTTBaseNode(Node):
-    def __init__(self, node_name, log_file="rtt_log_", timeout=2.0, message_limit=0):
+    def __init__(self, node_name='rtt_node', log_file="rtt_log_", message_interval=0.5, timeout=1.0, message_limit=0):
         super().__init__(node_name)
         self.start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         full_log_file = log_file + self.start_time + ".csv"
@@ -40,8 +40,8 @@ class RTTBaseNode(Node):
         # Write initial system information to the log file
         self.write_system_info()
 
-        self.timer = self.create_timer(1.0, self.publish_message)
-        self.timeout_checker = self.create_timer(0.5, self.check_for_timeouts)
+        self.timer = self.create_timer(message_interval, self.publish_message)
+        self.timeout_checker = self.create_timer(timeout/4, self.check_for_timeouts)
 
         self.message_limit = message_limit
         self.msg_count = 0
@@ -112,9 +112,9 @@ class RTTBaseNode(Node):
                     "status": status,
                 }
             )
-            self.get_logger().info(
-                f"Received response for message {msg_id}. RTT: {rtt:.6f} seconds ({status})"
-            )
+            #self.get_logger().info(
+            #   f"Received response for message {msg_id}. RTT: {rtt:.6f} seconds ({status})"
+            #)
 
             # Save to file after receiving a response
             self.save_rtt_log()
@@ -160,4 +160,4 @@ class RTTBaseNode(Node):
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerows(self.log_data)
             self.log_data = []  # Clear logged data after writing
-        self.get_logger().info(f"Saved RTT data to {self.log_file}")
+        #self.get_logger().info(f"Saved RTT data to {self.log_file}")

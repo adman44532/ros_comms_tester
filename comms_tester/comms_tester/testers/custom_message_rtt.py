@@ -29,6 +29,8 @@ class CustomMessageRTT(RTTBaseNode):
         )
 
     def publish_message(self):
+        if self.message_limit_check():
+            return
         # Construct a custom message
         msg = CustomMessage()
         msg.message_id = self.msg_count

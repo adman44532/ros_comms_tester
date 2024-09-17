@@ -11,7 +11,13 @@ import rclpy
 from std_msgs.msg import String
 from time import perf_counter
 from comms_tester.RTTBaseNode import RTTBaseNode
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
+qos_profile = QoSProfile(
+    reliability=ReliabilityPolicy.RELIABLE,
+    history=HistoryPolicy.KEEP_LAST,
+    depth=10
+)
 
 class SimpleStringRTT(RTTBaseNode):
     def __init__(self):
@@ -19,13 +25,14 @@ class SimpleStringRTT(RTTBaseNode):
         super().__init__(
             node_name="simple_string_rtt",
             log_file="simple_string_rtt_log_",
+            message_interval=0.25,
             timeout=2.0,
             message_limit=1000,
         )
 
         self.publisher_ = self.create_publisher(String, "latency_test_request", 10)
         self.subscriber_ = self.create_subscription(
-            String, "latency_test_response", self.listener_callback, 10
+            String, "latency_test_response", self.listener_callback, qos_profile
         )
 
     # OVERRIDE

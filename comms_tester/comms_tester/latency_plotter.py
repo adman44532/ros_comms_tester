@@ -60,6 +60,14 @@ def read_csv_data(csv_file_path):
     return system_info, data
 
 
+def is_processed(system_info):
+    """Checks if the CSV file has already been processed by looking for computed statistics."""
+    for line in system_info:
+        if line.startswith("# Run latency_plotter.py to compute statistics"):
+            return False
+    return True
+
+
 def compute_test_duration(system_info, data):
     """Computes the test duration based on the start time and last data point."""
     # Extract start time from system info
@@ -102,14 +110,32 @@ def display_data(data):
         logger.info("No data available to display.")
         return {}
 
+    # Compute packet loss
+    lost_packets = len(lost_data)
+    packet_loss_percentage = (lost_packets / total_packets) * 100
+
+    # Initialize statistics dictionary
+    statistics = {
+        "Total Packets Sent": total_packets,
+        "Packets Received": len(received_data),
+        "Packets Lost": lost_packets,
+        "Packet Loss Percentage": f"{packet_loss_percentage:.2f}%",
+        # Initialize RTT statistics with 'N/A'
+        "Average RTT": "N/A",
+        "Median RTT": "N/A",
+        "RTT Range": "N/A",
+        "Standard Deviation of RTT": "N/A",
+        "Variance of RTT": "N/A",
+    }
+
     # Check if there is any received data
     if not received_data:
         logger.info("No valid RTT data to display.")
-        return {}
+        return statistics
 
     rtts = [entry["rtt"] for entry in received_data]
 
-    # Compute statistics
+    # Compute RTT statistics
     avg_rtt = np.mean(rtts)
     median_rtt = np.median(rtts)
     min_rtt = np.min(rtts)
@@ -118,22 +144,16 @@ def display_data(data):
     std_dev_rtt = np.std(rtts)
     variance_rtt = np.var(rtts)
 
-    # Compute packet loss
-    lost_packets = len(lost_data)
-    packet_loss_percentage = (lost_packets / total_packets) * 100
-
-    # Return statistics as a dictionary
-    return {
-        "Total Packets Sent": total_packets,
-        "Packets Received": len(received_data),
-        "Packets Lost": lost_packets,
-        "Packet Loss Percentage": f"{packet_loss_percentage:.2f}%",
+    # Update statistics with computed RTT values
+    statistics.update({
         "Average RTT": f"{avg_rtt:.8f} s",
         "Median RTT": f"{median_rtt:.8f} s",
         "RTT Range": f"{range_rtt:.8f} s",
         "Standard Deviation of RTT": f"{std_dev_rtt:.8f} s",
         "Variance of RTT": f"{variance_rtt:.8f} s",
-    }
+    })
+
+    return statistics
 
 
 def plot_rtt(data, output_path):
@@ -250,6 +270,11 @@ def main():
 
         # Read data from CSV
         system_info, data = read_csv_data(csv_file_path)
+
+        # Check if the file has already been processed
+        if is_processed(system_info):
+            logger.info(f"Skipping already processed file: {csv_file}")
+            continue
 
         if data:
             # Compute test duration

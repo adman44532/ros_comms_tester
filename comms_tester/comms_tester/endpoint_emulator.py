@@ -19,7 +19,7 @@ class EndpointEmulator(Node):
 
     def listener_callback(self, msg):
         # Extract the received message
-        self.get_logger().info(f"Received message")
+        #self.get_logger().info(f"Received message")
 
         # Create a response message
         response_msg = String()
@@ -27,7 +27,7 @@ class EndpointEmulator(Node):
 
         # Publish the response message
         self.publisher_.publish(response_msg)
-        self.get_logger().info(f"Published response")
+        #self.get_logger().info(f"Published response")
 
 
 def main(args=None):

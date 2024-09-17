@@ -18,11 +18,12 @@ class LargePayloadRTT(RTTBaseNode):
         super().__init__(
             node_name="large_payload_rtt",
             log_file="large_payload_rtt_log_",
-            timeout=2.0,
+            message_interval=0.25,
+            timeout=0.02,
             message_limit=1000,
         )
 
-        self.publisher = self.create_publisher(String, "latency_test_request")
+        self.publisher_ = self.create_publisher(String, "latency_test_request", 10)
         self.subscriber_ = self.create_subscription(
             String, "latency_test_response", self.listener_callback, 10
         )
