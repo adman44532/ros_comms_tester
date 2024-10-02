@@ -10,7 +10,7 @@
 import rclpy
 from comms_interfaces.msg import CustomMessage  # Import the custom message type
 from time import perf_counter
-from RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
+from comms_tester.RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 qos_profile = QoSProfile(

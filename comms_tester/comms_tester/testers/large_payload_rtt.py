@@ -9,7 +9,7 @@
 import rclpy
 from std_msgs.msg import String
 from time import perf_counter
-from RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
+from comms_tester.RTTBaseNode import RTTBaseNode  # Adjust the import path based on your project structure
 from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 qos_profile = QoSProfile(
@@ -32,7 +32,7 @@ class LargePayloadRTT(RTTBaseNode):
             String, "latency_test_response", self.listener_callback, qos_profile=qos_profile
         )
 
-        self.large_payload = "X" * 1024 * 100  # Roughly 100KB Payload
+        self.large_payload = "X" * 1024 * 1000  # Roughly 1MB Payload
 
     def publish_message(self):
         if self.message_limit_check():
