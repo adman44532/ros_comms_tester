@@ -1,4 +1,6 @@
 .vscode
 .idea
-comms_tester/comms_tester/data/*.csv
-comms_tester/comms_tester/data/*.png
+build
+install
+log
+src/ROS-TCP-Endpoint
