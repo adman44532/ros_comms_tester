@@ -1,0 +1,39 @@
+# System Information
+# OS                       : Linux
+# OS Version               : #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2
+# Architecture             : x86_64
+# Python Version           : 3.10.12
+# Processor                : x86_64
+# Node Name                : increasing_payload_rtt
+# Start Time               : 2024-09-27 12:20:53
+#
+# Computed Statistics
+# Total Packets Sent       : 12
+# Packets Received         : 0
+# Packets Lost             : 12
+# Packet Loss Percentage   : 100.00%
+# Average RTT              : N/A
+# Median RTT               : N/A
+# RTT Range                : N/A
+# Standard Deviation of RTT: N/A
+# Variance of RTT          : N/A
+# Packets Under Threshold  : 0
+# Packets Over Threshold   : 0
+# Threshold RTT            : 0.02 s
+# Test Duration            : 0:00:02
+#
+# Run latency_plotter.py to compute statistics
+#
+message_id,send_time,receive_time,rtt,status
+0,5717.88813943,,,lost
+1,5718.140042767,,,lost
+2,5718.38880244,,,lost
+3,5718.638179294,,,lost
+4,5718.887965998,,,lost
+5,5719.138090867,,,lost
+6,5719.388171673,,,lost
+7,5719.64013377,,,lost
+8,5719.88807025,,,lost
+9,5720.137948338,,,lost
+10,5720.387960951,,,lost
+11,5720.638122223,,,lost

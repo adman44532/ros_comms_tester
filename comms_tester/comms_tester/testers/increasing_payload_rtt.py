@@ -25,7 +25,7 @@ class IncreasingPayloadRTT(RTTBaseNode):
             node_name="increasing_payload_rtt",
             log_file="increasing_payload_rtt_log_",
             message_interval=0.25,
-            message_limit=1000,
+            message_limit=250,
         )
 
         self.publisher_ = self.create_publisher(String, "latency_test_request", 10)
