@@ -1,6 +1,17 @@
-.vscode
-.idea
-build
+# Ignore .vscode and .idea directories
+.vscode/
+.idea/
+
+# Ignore colcon build directories
 install
+build
 log
-src/ROS-TCP-Endpoint
+
+# Ignore the ROS-TCP-Endpoint folder due to lisencing agreements
+src/ROS-TCP-Endpoint/
+
+# Ignore all directories within COMBINED_PROJECT, ROS_PLUGIN_ONLY, and VR_ONLY, these are too large to store
+Game_Engine_Projects/COMBINED_PROJECT/**/
+Game_Engine_Projects/ROS_PLUGIN_ONLY/**/
+Game_Engine_Projects/VR_ONLY/**/
+
