@@ -28,7 +28,7 @@ class RTTBaseNode(Node):
         message_limit=0,
     ):
         super().__init__(node_name)
-        self.start_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.start_time = datetime.now().strftime("%Y-%m-%d %H_%M_%S")
         full_log_file = log_file + self.start_time + ".csv"
 
         # Ensure the file is saved in the data folder
