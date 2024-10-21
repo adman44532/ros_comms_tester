@@ -1,0 +1,169 @@
+Environment,Test Type,Statistic,Average Value
+LAPTOP-LAPTOP_GODOTROS,simple_string,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_GODOTROS,simple_string,Average RTT,0.017432
+LAPTOP-LAPTOP_GODOTROS,simple_string,Median RTT,0.014070
+LAPTOP-LAPTOP_GODOTROS,simple_string,Standard Deviation of RTT,0.006250
+LAPTOP-LAPTOP_GODOTROS,simple_string,Variance of RTT,0.000039
+LAPTOP-LAPTOP_GODOTROS,simple_string,% Under Threshold,67.900000
+LAPTOP-LAPTOP_GODOTROS,simple_string,% Over Threshold,32.100000
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,Packet Loss Percentage,89.110000
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,Average RTT,0.019604
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,Median RTT,0.018321
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,Standard Deviation of RTT,0.004211
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,Variance of RTT,0.000018
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,% Under Threshold,8.503333
+LAPTOP-LAPTOP_GODOTROS,increasing_payload,% Over Threshold,2.383333
+HEADSET-TB3_GODOTROS,simple_string,Packet Loss Percentage,0.000000
+HEADSET-TB3_GODOTROS,simple_string,Average RTT,0.093795
+HEADSET-TB3_GODOTROS,simple_string,Median RTT,0.073295
+HEADSET-TB3_GODOTROS,simple_string,Standard Deviation of RTT,0.069059
+HEADSET-TB3_GODOTROS,simple_string,Variance of RTT,0.004771
+HEADSET-TB3_GODOTROS,simple_string,% Under Threshold,2.933333
+HEADSET-TB3_GODOTROS,simple_string,% Over Threshold,97.066667
+HEADSET-TB3_GODOTROS,increasing_payload,Packet Loss Percentage,89.110000
+HEADSET-TB3_GODOTROS,increasing_payload,Average RTT,0.071173
+HEADSET-TB3_GODOTROS,increasing_payload,Median RTT,0.065156
+HEADSET-TB3_GODOTROS,increasing_payload,Standard Deviation of RTT,0.030181
+HEADSET-TB3_GODOTROS,increasing_payload,Variance of RTT,0.000912
+HEADSET-TB3_GODOTROS,increasing_payload,% Under Threshold,0.016667
+HEADSET-TB3_GODOTROS,increasing_payload,% Over Threshold,10.870000
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,Average RTT,0.016687
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,Median RTT,0.014904
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,Standard Deviation of RTT,0.006866
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,Variance of RTT,0.000047
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,% Under Threshold,63.066667
+LAPTOP-LAPTOP_ROS2UNITY,large_payload,% Over Threshold,36.933333
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,Average RTT,0.001732
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,Median RTT,0.001672
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,Standard Deviation of RTT,0.001303
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,Variance of RTT,0.000002
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,% Under Threshold,99.900000
+LAPTOP-LAPTOP_ROS2UNITY,simple_string,% Over Threshold,0.100000
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,Average RTT,0.010555
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,Median RTT,0.007816
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,Standard Deviation of RTT,0.007799
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,Variance of RTT,0.000061
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,% Under Threshold,87.400000
+LAPTOP-LAPTOP_ROS2UNITY,increasing_payload,% Over Threshold,12.600000
+HEADSET-LAPTOP_GODOTROS,simple_string,Packet Loss Percentage,0.000000
+HEADSET-LAPTOP_GODOTROS,simple_string,Average RTT,0.091652
+HEADSET-LAPTOP_GODOTROS,simple_string,Median RTT,0.070887
+HEADSET-LAPTOP_GODOTROS,simple_string,Standard Deviation of RTT,0.069734
+HEADSET-LAPTOP_GODOTROS,simple_string,Variance of RTT,0.004864
+HEADSET-LAPTOP_GODOTROS,simple_string,% Under Threshold,4.800000
+HEADSET-LAPTOP_GODOTROS,simple_string,% Over Threshold,95.200000
+HEADSET-LAPTOP_GODOTROS,increasing_payload,Packet Loss Percentage,89.110000
+HEADSET-LAPTOP_GODOTROS,increasing_payload,Average RTT,0.056246
+HEADSET-LAPTOP_GODOTROS,increasing_payload,Median RTT,0.046899
+HEADSET-LAPTOP_GODOTROS,increasing_payload,Standard Deviation of RTT,0.031289
+HEADSET-LAPTOP_GODOTROS,increasing_payload,Variance of RTT,0.001025
+HEADSET-LAPTOP_GODOTROS,increasing_payload,% Under Threshold,0.000000
+HEADSET-LAPTOP_GODOTROS,increasing_payload,% Over Threshold,10.890000
+HEADSET-TB3_UNITYTCPCONN,simple_string,Packet Loss Percentage,0.000000
+HEADSET-TB3_UNITYTCPCONN,simple_string,Average RTT,0.077264
+HEADSET-TB3_UNITYTCPCONN,simple_string,Median RTT,0.058598
+HEADSET-TB3_UNITYTCPCONN,simple_string,Standard Deviation of RTT,0.057027
+HEADSET-TB3_UNITYTCPCONN,simple_string,Variance of RTT,0.003598
+HEADSET-TB3_UNITYTCPCONN,simple_string,% Under Threshold,2.200000
+HEADSET-TB3_UNITYTCPCONN,simple_string,% Over Threshold,97.800000
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,Packet Loss Percentage,39.102500
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,Average RTT,13.643078
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,Median RTT,2.098955
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,Standard Deviation of RTT,18.994135
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,Variance of RTT,401.396028
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,% Under Threshold,0.000000
+HEADSET-TB3_UNITYTCPCONN,increasing_payload,% Over Threshold,60.897500
+HEADSET-TB3_UNITYTCPCONN,large_payload,Packet Loss Percentage,60.523333
+HEADSET-TB3_UNITYTCPCONN,large_payload,Average RTT,55.926680
+HEADSET-TB3_UNITYTCPCONN,large_payload,Median RTT,52.714909
+HEADSET-TB3_UNITYTCPCONN,large_payload,Standard Deviation of RTT,28.724213
+HEADSET-TB3_UNITYTCPCONN,large_payload,Variance of RTT,832.907855
+HEADSET-TB3_UNITYTCPCONN,large_payload,% Under Threshold,0.000000
+HEADSET-TB3_UNITYTCPCONN,large_payload,% Over Threshold,39.476667
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,Packet Loss Percentage,18.324000
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,Average RTT,0.140002
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,Median RTT,0.085069
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,Standard Deviation of RTT,0.319199
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,Variance of RTT,0.340828
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,% Under Threshold,1.556000
+HEADSET-LAPTOP_UNITYTCPCONN,simple_string,% Over Threshold,80.122000
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,Packet Loss Percentage,0.040000
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,Average RTT,0.323119
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,Median RTT,0.138993
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,Standard Deviation of RTT,0.448979
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,Variance of RTT,0.388627
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,% Under Threshold,0.080000
+HEADSET-LAPTOP_UNITYTCPCONN,increasing_payload,% Over Threshold,99.880000
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,Packet Loss Percentage,50.566667
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,Average RTT,20.943965
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,Median RTT,21.117109
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,Standard Deviation of RTT,12.096995
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,Variance of RTT,147.818595
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,% Under Threshold,0.000000
+HEADSET-LAPTOP_UNITYTCPCONN,large_payload,% Over Threshold,74.150000
+TB3-TB3_INTERNAL,simple_string,Packet Loss Percentage,0.000000
+TB3-TB3_INTERNAL,simple_string,Average RTT,0.003816
+TB3-TB3_INTERNAL,simple_string,Median RTT,0.003891
+TB3-TB3_INTERNAL,simple_string,Standard Deviation of RTT,0.000425
+TB3-TB3_INTERNAL,simple_string,Variance of RTT,0.000000
+TB3-TB3_INTERNAL,simple_string,% Under Threshold,100.000000
+TB3-TB3_INTERNAL,simple_string,% Over Threshold,0.000000
+TB3-TB3_INTERNAL,large_payload,Packet Loss Percentage,0.000000
+TB3-TB3_INTERNAL,large_payload,Average RTT,0.012548
+TB3-TB3_INTERNAL,large_payload,Median RTT,0.012757
+TB3-TB3_INTERNAL,large_payload,Standard Deviation of RTT,0.003335
+TB3-TB3_INTERNAL,large_payload,Variance of RTT,0.000011
+TB3-TB3_INTERNAL,large_payload,% Under Threshold,94.100000
+TB3-TB3_INTERNAL,large_payload,% Over Threshold,5.900000
+TB3-TB3_INTERNAL,increasing_payload,Packet Loss Percentage,0.000000
+TB3-TB3_INTERNAL,increasing_payload,Average RTT,0.008906
+TB3-TB3_INTERNAL,increasing_payload,Median RTT,0.006865
+TB3-TB3_INTERNAL,increasing_payload,Standard Deviation of RTT,0.005030
+TB3-TB3_INTERNAL,increasing_payload,Variance of RTT,0.000025
+TB3-TB3_INTERNAL,increasing_payload,% Under Threshold,98.166667
+TB3-TB3_INTERNAL,increasing_payload,% Over Threshold,1.833333
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,Average RTT,0.012945
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,Median RTT,0.005441
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,Standard Deviation of RTT,0.011773
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,Variance of RTT,0.000139
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,% Under Threshold,66.600000
+LAPTOP-LAPTOP_INTERNAL,increasing_payload,% Over Threshold,33.400000
+LAPTOP-LAPTOP_INTERNAL,large_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_INTERNAL,large_payload,Average RTT,0.025397
+LAPTOP-LAPTOP_INTERNAL,large_payload,Median RTT,0.027288
+LAPTOP-LAPTOP_INTERNAL,large_payload,Standard Deviation of RTT,0.006078
+LAPTOP-LAPTOP_INTERNAL,large_payload,Variance of RTT,0.000037
+LAPTOP-LAPTOP_INTERNAL,large_payload,% Under Threshold,25.600000
+LAPTOP-LAPTOP_INTERNAL,large_payload,% Over Threshold,74.400000
+LAPTOP-LAPTOP_INTERNAL,simple_string,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_INTERNAL,simple_string,Average RTT,0.001574
+LAPTOP-LAPTOP_INTERNAL,simple_string,Median RTT,0.001374
+LAPTOP-LAPTOP_INTERNAL,simple_string,Standard Deviation of RTT,0.000951
+LAPTOP-LAPTOP_INTERNAL,simple_string,Variance of RTT,0.000001
+LAPTOP-LAPTOP_INTERNAL,simple_string,% Under Threshold,100.000000
+LAPTOP-LAPTOP_INTERNAL,simple_string,% Over Threshold,0.000000
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,Average RTT,0.016785
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,Median RTT,0.013081
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,Standard Deviation of RTT,0.010114
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,Variance of RTT,0.000103
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,% Under Threshold,66.633333
+LAPTOP-LAPTOP_UNITYTCPCONN,increasing_payload,% Over Threshold,33.366667
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,Average RTT,0.025664
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,Median RTT,0.025451
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,Standard Deviation of RTT,0.008362
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,Variance of RTT,0.000070
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,% Under Threshold,29.033333
+LAPTOP-LAPTOP_UNITYTCPCONN,large_payload,% Over Threshold,70.966667
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,Packet Loss Percentage,0.000000
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,Average RTT,0.007685
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,Median RTT,0.007623
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,Standard Deviation of RTT,0.003031
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,Variance of RTT,0.000009
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,% Under Threshold,99.866667
+LAPTOP-LAPTOP_UNITYTCPCONN,simple_string,% Over Threshold,0.133333

@@ -1,0 +1,236 @@
+{
+    "LAPTOP-LAPTOP_GODOTROS": {
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.017432430065332738,
+            "Median RTT": 0.014069975000287102,
+            "Standard Deviation of RTT": 0.006249725144911916,
+            "Variance of RTT": 3.916485256717739e-05,
+            "% Under Threshold": 67.9,
+            "% Over Threshold": 32.1
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 89.11,
+            "Average RTT": 0.019604415692630967,
+            "Median RTT": 0.018320714166293283,
+            "Standard Deviation of RTT": 0.004210821241489737,
+            "Variance of RTT": 1.842040368417816e-05,
+            "% Under Threshold": 8.503333333333334,
+            "% Over Threshold": 2.3833333333333333
+        }
+    },
+    "HEADSET-TB3_GODOTROS": {
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.0937954461983287,
+            "Median RTT": 0.07329470900003794,
+            "Standard Deviation of RTT": 0.06905914293948212,
+            "Variance of RTT": 0.004770590132615173,
+            "% Under Threshold": 2.9333333333333336,
+            "% Over Threshold": 97.06666666666666
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 89.11,
+            "Average RTT": 0.07117256166146524,
+            "Median RTT": 0.06515623149986514,
+            "Standard Deviation of RTT": 0.03018101957836279,
+            "Variance of RTT": 0.0009118372831133902,
+            "% Under Threshold": 0.016666666666666666,
+            "% Over Threshold": 10.87
+        }
+    },
+    "LAPTOP-LAPTOP_ROS2UNITY": {
+        "large_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.01668732421600266,
+            "Median RTT": 0.014903679500093817,
+            "Standard Deviation of RTT": 0.0068664118895696395,
+            "Variance of RTT": 4.717258304146985e-05,
+            "% Under Threshold": 63.06666666666667,
+            "% Over Threshold": 36.93333333333333
+        },
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.0017315267350031215,
+            "Median RTT": 0.0016723006668446668,
+            "Standard Deviation of RTT": 0.001303198032631895,
+            "Variance of RTT": 2.0605277812451554e-06,
+            "% Under Threshold": 99.89999999999999,
+            "% Over Threshold": 0.10000000000000002
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.01055544071032874,
+            "Median RTT": 0.0078157829999933,
+            "Standard Deviation of RTT": 0.007799145735189358,
+            "Variance of RTT": 6.0854517281992404e-05,
+            "% Under Threshold": 87.39999999999999,
+            "% Over Threshold": 12.6
+        }
+    },
+    "HEADSET-LAPTOP_GODOTROS": {
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.09165208752033198,
+            "Median RTT": 0.07088738866665756,
+            "Standard Deviation of RTT": 0.06973359227871621,
+            "Variance of RTT": 0.0048635000126008455,
+            "% Under Threshold": 4.8,
+            "% Over Threshold": 95.2
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 89.11,
+            "Average RTT": 0.05624601443229216,
+            "Median RTT": 0.046899110833389046,
+            "Standard Deviation of RTT": 0.03128890620284349,
+            "Variance of RTT": 0.001024639583618467,
+            "% Under Threshold": 0.0,
+            "% Over Threshold": 10.89
+        }
+    },
+    "HEADSET-TB3_UNITYTCPCONN": {
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.07726364963066502,
+            "Median RTT": 0.05859790349995814,
+            "Standard Deviation of RTT": 0.057026877426395305,
+            "Variance of RTT": 0.003597956525799279,
+            "% Under Threshold": 2.1999999999999997,
+            "% Over Threshold": 97.8
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 39.1025,
+            "Average RTT": 13.643077953866715,
+            "Median RTT": 2.098955281749909,
+            "Standard Deviation of RTT": 18.99413495221914,
+            "Variance of RTT": 401.39602826772125,
+            "% Under Threshold": 0.0,
+            "% Over Threshold": 60.89750000000001
+        },
+        "large_payload": {
+            "Packet Loss Percentage": 60.52333333333333,
+            "Average RTT": 55.92668033848235,
+            "Median RTT": 52.71490862949986,
+            "Standard Deviation of RTT": 28.72421283953854,
+            "Variance of RTT": 832.9078554170679,
+            "% Under Threshold": 0.0,
+            "% Over Threshold": 39.47666666666667
+        }
+    },
+    "HEADSET-LAPTOP_UNITYTCPCONN": {
+        "simple_string": {
+            "Packet Loss Percentage": 18.324,
+            "Average RTT": 0.1400023922706966,
+            "Median RTT": 0.08506881779994722,
+            "Standard Deviation of RTT": 0.31919869163131237,
+            "Variance of RTT": 0.3408279102256738,
+            "% Under Threshold": 1.556,
+            "% Over Threshold": 80.122
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 0.04,
+            "Average RTT": 0.32311882092435423,
+            "Median RTT": 0.13899329799978655,
+            "Standard Deviation of RTT": 0.4489787395427586,
+            "Variance of RTT": 0.3886265929774567,
+            "% Under Threshold": 0.08,
+            "% Over Threshold": 99.88000000000001
+        },
+        "large_payload": {
+            "Packet Loss Percentage": 50.56666666666666,
+            "Average RTT": 20.943964746027365,
+            "Median RTT": 21.117109342499816,
+            "Standard Deviation of RTT": 12.09699511180606,
+            "Variance of RTT": 147.81859474621658,
+            "% Under Threshold": 0.0,
+            "% Over Threshold": 74.15
+        }
+    },
+    "TB3-TB3_INTERNAL": {
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.003815940007331494,
+            "Median RTT": 0.0038907621666718333,
+            "Standard Deviation of RTT": 0.0004246427419331102,
+            "Variance of RTT": 1.8319030029570263e-07,
+            "% Under Threshold": 100.0,
+            "% Over Threshold": 0.0
+        },
+        "large_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.012548338458011085,
+            "Median RTT": 0.012756543833650782,
+            "Standard Deviation of RTT": 0.003335092858032634,
+            "Variance of RTT": 1.1150404993639848e-05,
+            "% Under Threshold": 94.10000000000001,
+            "% Over Threshold": 5.8999999999999995
+        },
+        "increasing_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.008905894628672842,
+            "Median RTT": 0.006864854999851817,
+            "Standard Deviation of RTT": 0.0050303768647226394,
+            "Variance of RTT": 2.5355243513364696e-05,
+            "% Under Threshold": 98.16666666666667,
+            "% Over Threshold": 1.8333333333333333
+        }
+    },
+    "LAPTOP-LAPTOP_INTERNAL": {
+        "increasing_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.012944581969332174,
+            "Median RTT": 0.00544050699992715,
+            "Standard Deviation of RTT": 0.01177343125303216,
+            "Variance of RTT": 0.0001386568869188506,
+            "% Under Threshold": 66.60000000000001,
+            "% Over Threshold": 33.4
+        },
+        "large_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.02539696632233035,
+            "Median RTT": 0.027287715000056733,
+            "Standard Deviation of RTT": 0.006078027240932479,
+            "Variance of RTT": 3.721782629445698e-05,
+            "% Under Threshold": 25.599999999999998,
+            "% Over Threshold": 74.39999999999999
+        },
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.001573558992823994,
+            "Median RTT": 0.0013743740000222333,
+            "Standard Deviation of RTT": 0.0009505473399756678,
+            "Variance of RTT": 9.357325928224897e-07,
+            "% Under Threshold": 100.0,
+            "% Over Threshold": 0.0
+        }
+    },
+    "LAPTOP-LAPTOP_UNITYTCPCONN": {
+        "increasing_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.016784783161008163,
+            "Median RTT": 0.013080745500095218,
+            "Standard Deviation of RTT": 0.010113947061134141,
+            "Variance of RTT": 0.00010253355689291976,
+            "% Under Threshold": 66.63333333333333,
+            "% Over Threshold": 33.36666666666667
+        },
+        "large_payload": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.025664381675326947,
+            "Median RTT": 0.025451140833562567,
+            "Standard Deviation of RTT": 0.008361849056569346,
+            "Variance of RTT": 6.992724605071276e-05,
+            "% Under Threshold": 29.03333333333333,
+            "% Over Threshold": 70.96666666666665
+        },
+        "simple_string": {
+            "Packet Loss Percentage": 0.0,
+            "Average RTT": 0.0076850551156724374,
+            "Median RTT": 0.007622602500001983,
+            "Standard Deviation of RTT": 0.003030781617536211,
+            "Variance of RTT": 9.22320163658602e-06,
+            "% Under Threshold": 99.86666666666667,
+            "% Over Threshold": 0.13333333333333333
+        }
+    }
+}
