@@ -4,19 +4,18 @@ import json
 
 data_storage_path = "data_storage"
 
-# Environment is a particular plugin on a particular device/pair
-# Test type is one of the ones written in the comms_tester package
-
 # Create a dictionary to store averages for each environment and test type
 results = {}
 
-# Only selected statistics that are easy to average, other ones either didn't have % or not relevant
+# Include more statistics, handling both percentage and non-percentage based ones
 computed_statistics = [
     "Packet Loss Percentage",
     "Average RTT",
     "Median RTT",
     "Standard Deviation of RTT",
-    "Variance of RTT"
+    "Variance of RTT",
+    "% Under Threshold",
+    "% Over Threshold"
 ]
 
 def get_test_type(file_name):
@@ -52,6 +51,7 @@ for root, dirs, files in os.walk(data_storage_path):
                                     for stat in computed_statistics:
                                         if stat in line:
                                             value_str = line.split(':')[-1].strip().split()[0]
+                                            # Handle percentage and non-percentage values
                                             value = float(value_str.replace('%', '')) if '%' in value_str else float(value_str)
                                             results[environment][test_type][stat].append(value)
                     except Exception as e:
